@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>AMBIQUICK PROJECT</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.3/components/contacts/contact-1/assets/css/contact-1.css"/>
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <!-- Leaflet Routing Machine CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+</head>
+<body>
+    <!-- Links -->
+    <header>
+        <ul>
+            <li><a href="#communication">COMMUNICATION</a></li>
+            <li><a href="#report-incident">REPORT INCIDENT</a></li>
+            <li><a href="#track">TRACK AMBULANCE</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#aboutus">ABOUT US</a></li>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="file:///C:/Users/Testing/Desktop/AMBIQUICK-a/login.html?email=charlesmbuva%40gmail.com&password=123#">LOGIN</a></li>
+        </ul>
+    </header>
+
+    <!-- Home Section -->
+    <div class="Section_top">
+        <div class="content">
+            <h1>AMBIQUICK<br><span>AMBULANCE<br></span><span>SERVICES</span></h1>
+            <a href="#">Welcome</a>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section id="aboutus" class="aboutus">
+        <center><h1>About us</h1></center>
+        <div class="about-us-page" style="width: 100%; height: 100vh; display: flex;">
+            <div class="about-img"><img src="./img/img2.jpg"></div>
+            <div class="atext">
+                <h2>We are Ambiquick services. <br>We offer very fast ambulance<br>and fast response services</h2>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="services">
+        <center><h1>Our Services</h1></center>
+        <!-- Add your service content here -->
+        <div class="our-services">
+            <div class="our-services">
+                <div class="emr">
+                    <div class="emri">
+                        <span><h4>Emergency Medical Response<br></h4><br>
+                        <img src="./img/emr-response.jpg">   
+                    </span>
+                    </div>  
+                </div>
+    
+                <div class="our-services">
+                    <div class="emr">
+                        <div class="emri">
+                            <span><h4>Basic Life Support</h4><br>
+                                <img src="./img/BLS.jpg">   
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="emr">
+                        <div class="emri">
+                            <span><h4>Trauma Care</h4><br>
+                                <img src="./img/trauma.jpg">   
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="our-services">
+                    <div class="emr">
+                        <div class="emri">
+                            <span><h4>Medical Monitoring</h4><br>
+                                <img src="./img/monitoring.jpeg">   
+                            </span>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="emr">
+                        <div class="emri">
+                            <span><h4>Patient Advocacy</h4><br>
+                                <img src="./img/advocacy.jpg">   
+                            </span>
+                    
+                        </div>
+                    </div>
+                    
+                    <div class="emr">
+    
+        </section>
+    
+        </section>
+    
+    
+        </div>
+    </section>
+
+    <!-- Ambulance Tracking Section -->
+    <section id="track" class="track">
+        <center><h1>Track Ambulance</h1></center>
+        <!-- Leaflet Map Container -->
+        <div id="map" style="width: 100%; height: 500px;"></div>
+    </section>
+
+    <!-- Emergency Incident Reporting Section -->
+    <section id="incident" class="incident">
+        <center><h1>Report Incident</h1></center>
+        <form id="incident-form" action="submit_form.php" method="post"></form>
+        <form id="incident-form">
+            <!-- Incident reporting form -->
+            <div class="textbox">
+                <label for="incident-type">Incident Type:</label>
+                <input type="text" id="incident-type" name="incident-type">
+            </div>
+            <div class="textbox">
+                <label for="incident-location">Incident Location:</label>
+                <input type="text" id="incident-location"  name="incident-location">
+            </div>
+            <div class="textbox">
+                <label for="contact-information">Contact Information:</label>
+                <input type="text" id="contact-information"  name="contact-information">
+            </div>
+            <div class="textbox">
+                <label for="incident-description">Incident Description:</label>
+                <textarea id="incident-description" name="incident-description" rows="4"></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+        </form>
+    </section>
+
+    <!-- Communication Section -->
+    <section id="message" class="message">
+        <center><h1>Communication</h1></center>
+        <form id="communication" action="submit_form.php" method="post"></form>
+        <div class="message-box">
+            <!-- Communication form -->
+            <label for="message-input">Message:</label>
+            <input type="text" id="message-input" name="message-input">
+        </div>
+        <button id="send-message-btn">Send Message</button>
+    </section>
+
+        </div>
+        <!-- JavaScript -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+    <script>
+        // Initialize the map
+        var map = L.map('map').setView([0, 0], 2); // Center the map at [latitude, longitude] with zoom level 2
+
+        // Add a tile layer (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Function to create routes from the current location to ambulance centers
+        function createRoutesToAmbulanceCenters() {
+            // Fetch ambulance emergency center data from your backend (replace this with your actual data retrieval method)
+            var ambulanceCenters = [
+                // List of ambulance centers with latitude and longitude
+                { name: "Ambulance Center 1", latitude: -1.286389, longitude: 36.817223 }, // Nairobi
+                { name: "Ambulance Center 2", latitude: -0.283333, longitude: 36.066666 }, // Mombasa
+    { name: "Ambulance Center 1", latitude: -1.286389, longitude: 36.817223 }, // Nairobi
+    { name: "Ambulance Center 2", latitude: -1.2921, longitude: 36.8219 }, // Nairobi CBD
+    { name: "Ambulance Center 3", latitude: -1.2683, longitude: 36.8116 }, // Westlands
+    { name: "Ambulance Center 4", latitude: -1.2857, longitude: 36.8211 }, // Upper Hill
+    { name: "Ambulance Center 5", latitude: -1.3008, longitude: 36.7784 }, // Kilimani
+    { name: "Ambulance Center 6", latitude: -1.2677, longitude: 36.8116 }, // Parklands
+    { name: "Ambulance Center 7", latitude: -1.2865, longitude: 36.8003 }, // Ngara
+    { name: "Ambulance Center 8", latitude: -1.3026, longitude: 36.8005 }, // Lavington
+    { name: "Ambulance Center 9", latitude: -1.2557, longitude: 36.7884 }, // Karen
+    { name: "Ambulance Center 10", latitude: -1.3072, longitude: 36.8457 }, // Roysambu
+    { name: "Ambulance Center 11", latitude: -1.2807, longitude: 36.7831 }, // Hurlingham
+    { name: "Ambulance Center 12", latitude: -1.2865, longitude: 36.8172 }, // Pangani
+    { name: "Ambulance Center 13", latitude: -1.3124, longitude: 36.7802 }, // Kileleshwa
+    { name: "Ambulance Center 14", latitude: -1.2627, longitude: 36.8026 }, // Gigiri
+    { name: "Ambulance Center 15", latitude: -1.2805, longitude: 36.8167 }, // Eastleigh
+    { name: "Ambulance Center 16", latitude: -1.3156, longitude: 36.8205 }, // Ruaraka
+    { name: "Ambulance Center 17", latitude: -1.2466, longitude: 36.7846 }, // Langata
+    { name: "Ambulance Center 18", latitude: -1.2985, longitude: 36.7765 }, // Kileleshwa
+    { name: "Ambulance Center 19", latitude: -1.2871, longitude: 36.8344 }, // Kahawa
+    { name: "Ambulance Center 20", latitude: -1.2789, longitude: 36.8164 }, // Juja Road
+    { name: "Ambulance Center 21", latitude: -1.3032, longitude: 36.8344 }, // Githurai
+    { name: "Ambulance Center 22", latitude: -1.3085, longitude: 36.8223 }, // Thika Road
+    { name: "Ambulance Center 23", latitude: -1.2654, longitude: 36.8037 }, // Riverside
+    { name: "Ambulance Center 24", latitude: -1.3193, longitude: 36.8282 }, // Zimmerman
+    { name: "Ambulance Center 25", latitude: -1.2482, longitude: 36.8219 }, // Wilson Airport
+    { name: "Ambulance Center 26", latitude: -1.2808, longitude: 36.8074 }, // Garden Estate
+    { name: "Ambulance Center 27", latitude: -1.2925, longitude: 36.8223 }, // Kenyatta Hospital
+    { name: "Ambulance Center 28", latitude: -1.2746, longitude: 36.8326 }, // Mwiki
+    { name: "Ambulance Center 29", latitude: -1.2909, longitude: 36.8834 }, // Kasarani
+    { name: "Ambulance Center 30", latitude: -1.3046, longitude: 36.8357 }, // Kahawa West
+    { name: "Ambulance Center 31", latitude: -1.2606, longitude: 36.8006 }, // Mountain View
+    { name: "Ambulance Center 32", latitude: -1.3022, longitude: 36.8204 }, // Githurai 44
+    { name: "Ambulance Center 33", latitude: -1.2863, longitude: 36.8168 }, // Mathare
+    { name: "Ambulance Center 34", latitude: -1.3121, longitude: 36.7913 }, // Spring Valley
+    { name: "Ambulance Center 35", latitude: -1.2994, longitude: 36.8001 }, // Milimani
+    { name: "Ambulance Center 36", latitude: -1.2713, longitude: 36.8027 }, // Loresho
+    { name: "Ambulance Center 37", latitude: -1.2823, longitude: 36.8286 }, // Gachie
+    { name: "Ambulance Center 38", latitude: -1.3166, longitude: 36.8055 }, // Kasarani Mwiki
+    { name: "Ambulance Center 39", latitude: -1.2885, longitude: 36.8049 }, // Pangani Estate
+    { name: "Ambulance Center 40", latitude: -1.3193, longitude: 36.8282 } // Zimmerman
+];
+          // Get current user location (assuming it's available)
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var userLocation = [position.coords.latitude, position.coords.longitude];
+
+                // Iterate through ambulance centers and create routes
+                ambulanceCenters.forEach(function(center) {
+                    // Define waypoints (user location and ambulance center)
+                    var waypoints = [
+                        L.latLng(userLocation[0], userLocation[1]),
+                        L.latLng(center.latitude, center.longitude)
+                    ];
+
+                    // Create the routing control
+                    L.Routing.control({
+                        waypoints: waypoints,
+                        routeWhileDragging: true, // Generate routes while dragging the waypoints
+                        show: false // Hide the routing control (you can show it if needed)
+                    }).addTo(map);
+                });
+            });
+        }
+
+        // Call the function to create routes when the page loads
+        createRoutesToAmbulanceCenters();
+    </script>
+</body>
+</html>
